@@ -1,0 +1,54 @@
+Documento responsável por listar os possíveis curls que podem ser executados na aplicação.
+Acesse via terminal até a pasta aonde esse arquivo esta alocado e execute os comandos listados abaixo:
+
+
+
+=================================================================================================================
+=> Tarefas<=
+Para poder inserir ou fazer atualizações na tabela de tarefas o JSON deve seguir o seguinte modelo:
+
+
+Inclusão:
+{
+	"name":"Primeira Tarefa",
+	"description": "Tarefa Inicial"
+}
+
+Atualização:
+{
+	"name":"Primeira Tarefa",
+	"newName":"Primeira Tarefa Alterada",
+	"newDescription": "Tarefa Inicial Alterada"
+}
+
+
+Deleção:
+{
+	"name":"Primeira Tarefa Alterada",
+}
+
+=================================================================================================================
+get
+
+curl http://localhost:3000/task -X GET -v -H "Content-type: application/json"
+
+
+=================================================================================================================
+post
+
+curl http://localhost:3000/task -X POST -v -H "Content-type: application/json" -d @jsons/tarefaTestePost.json | json_pp
+
+
+=================================================================================================================
+put
+
+curl http://localhost:3000/task -X PUT -v -H "Content-type: application/json" -d @jsons/tarefaTestePut.json | json_pp
+
+
+=================================================================================================================
+delete
+
+curl http://localhost:3000/task -X DELETE -v -H "Content-type: application/json" -d @jsons/tarefaTesteDelete.json | json_pp
+
+
+=================================================================================================================
