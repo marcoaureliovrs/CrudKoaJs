@@ -30,13 +30,16 @@ Deleção:
 =================================================================================================================
 get
 
-curl http://localhost:3000/task -X GET -v -H "Content-type: application/json"
+curl http://localhost:3000/tasks -X GET -v -H "Content-type: application/json" -H "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6Im1hcmNvIiwiaWF0IjoxNTAwOTkzNDY2LCJleHAiOjE1MDEwNzc5NjZ9.GOpWYV_3HDgcznQoAdO-fqTSl3VMppF1tzI5c4ag_Wk"
 
 
 =================================================================================================================
 post
 
-curl http://localhost:3000/task -X POST -v -H "Content-type: application/json" -d @jsons/tarefaTestePost.json | json_pp
+curl http://localhost:3000/task -X POST -v -H "Content-type: application/json" -H "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6Im1hcmNvIiwiaWF0IjoxNTAwOTkzNDY2LCJleHAiOjE1MDEwNzc5NjZ9.GOpWYV_3HDgcznQoAdO-fqTSl3VMppF1tzI5c4ag_Wk" -d @jsons/tarefaTestePost.json | json_pp
+
+
+
 
 
 =================================================================================================================
@@ -50,5 +53,34 @@ delete
 
 curl http://localhost:3000/task -X DELETE -v -H "Content-type: application/json" -d @jsons/tarefaTesteDelete.json | json_pp
 
+
+=================================================================================================================
+=>Usuários<=
+Para poder inserir ou fazer atualizações na tabela de Usuario o JSON deve seguir o seguinte modelo:
+
+
+Inclusão:
+{
+	"login":"marco",
+	"passwd":"123"
+}
+
+
+=================================================================================================================
+get
+
+curl http://localhost:3000/user -X GET -v -H "Content-type: application/json"
+
+=================================================================================================================
+post
+
+curl http://localhost:3000/user -X POST -v -H "Content-type: application/json" -d @jsons/usuarioTestePost.json | json_pp
+
+
+=================================================================================================================
+=>Autenticação<=
+Para poder se autenticar basta enviar o login e senha  para http://localhost:3000/auth, conforme exemplo abaixo:
+
+curl http://localhost:3000/auth -X POST -v -H "Content-type: application/json" -d @jsons/authTest.json | json_pp
 
 =================================================================================================================

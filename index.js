@@ -11,7 +11,8 @@ const logger = require('koa-logger')
 const koaRes = require('koa-res')
 const handleError = require('koa-handle-error')
 const task = require('./controller/tarefas')
-//const auth = require('./controller/auth')
+const user = require('./controller/user')
+const auth = require('./controller/auth')
 const app = new koa()
 
 /*
@@ -52,13 +53,21 @@ app.use(bodyParser())
 // Format response as JSON
 app.use(convert(koaRes()))
 
+
 // Config Routes
-/*
-app.use(route(_ => {
-  _.post('/auth', auth.enter),
-  _.use('/*', auth.verifyToken)
+app.use(router(_ => {
+  _.get('/user', user.getUser),
+  _.post('/user', user.createUser)
 }))
-*/
+
+
+app.use(router(_ => {
+  _.post('/auth', auth.enter),
+  _.all('/*', auth.verifyToken)
+}))
+
+  
+
 app.use(router(_ => {
   _.get('/tasks', task.getTasks),
   _.post('/task', task.createTask),
