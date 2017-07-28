@@ -32,7 +32,6 @@ exports.updateTask = async (ctx) => {
 	if (!result) {
 		throw new Error('Failed to update task')
 	} else {
-		console.log(result)
 		ctx.body = {message: 'Task updated!', data: result}
 		ctx.status = 200
 	}

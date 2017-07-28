@@ -9,6 +9,7 @@ exports.createUser = async (ctx) => {
 		throw new Error('failed to create user.')
 	} else {
 		ctx.body = {message: 'User created!'}
+		ctx.status = 200
 	}
 }
 
@@ -19,5 +20,6 @@ exports.getUser = async (ctx) => {
 		throw new Error("There was an error retrieving users.")
 	} else {
 		ctx.body = users
+		ctx.status = 200
 	}
 }
