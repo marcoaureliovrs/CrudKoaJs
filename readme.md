@@ -5,7 +5,6 @@ Application developed for knowledge test in koajs, mongoose, jest and jwt framew
 The project theme: Task List API.
 
 The following is a list of packages used to develop this API:
-
 	 Bluebird: 3.5.0
      Jsonwebtoken: 7.4.1
      Koa: 2.2.0
