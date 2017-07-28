@@ -39,9 +39,6 @@ post
 curl http://localhost:3000/task -X POST -v -H "Content-type: application/json" -H "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6Im1hcmNvIiwiaWF0IjoxNTAwOTkzNDY2LCJleHAiOjE1MDEwNzc5NjZ9.GOpWYV_3HDgcznQoAdO-fqTSl3VMppF1tzI5c4ag_Wk" -d @jsons/tarefaTestePost.json | json_pp
 
 
-
-
-
 =================================================================================================================
 put
 

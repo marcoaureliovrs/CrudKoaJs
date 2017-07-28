@@ -1,4 +1,4 @@
-const Task = require('../models/tarefas')
+const Task = require('../models/task')
 
 exports.getTasks = async (ctx) => {
 	const tasks = await Task.find({})
