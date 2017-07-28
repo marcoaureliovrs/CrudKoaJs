@@ -15,7 +15,6 @@ const auth = require('./controller/auth')
 const app = new koa()
 require('./config/database')
 
-
 /*
   Configuration to Server
 */
@@ -29,7 +28,6 @@ app.use(async (ctx, next) => {
     ctx.app.emit('error', err, ctx)
   }
 });
-
 
 // logging
 app.use(logger())
@@ -47,13 +45,10 @@ app.use(router(_ => {
   _.post('/user', user.createUser)
 }))
 
-
 app.use(router(_ => {
   _.post('/auth', auth.enter),
   _.all('/*', auth.verifyToken)
-}))
-
-  
+}))  
 
 app.use(router(_ => {
   _.get('/tasks', task.getTasks),
@@ -61,7 +56,6 @@ app.use(router(_ => {
   _.put('/task', task.updateTask),
   _.delete('/task', task.deleteTask)
 }))
-
 
 module.exports = app.listen(3000)
 

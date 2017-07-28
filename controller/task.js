@@ -6,6 +6,7 @@ exports.getTasks = async (ctx) => {
 		throw new Error("There was an error retrieving your tasks.")
 	} else {
 		ctx.body = tasks
+		ctx.status = 200
 	}
 }
 
@@ -20,18 +21,20 @@ exports.createTask = async (ctx) => {
 		throw new Error('Task failed to create.')
 	} else {
 		ctx.body = {message: 'Task created!', data: result}
+		ctx.status = 200
 	}
 }
 
 exports.updateTask = async (ctx) => {
 	const searchByName = {name: ctx.request.body.name}
-	const update = {name: ctx.request.body.newName, urgency: ctx.request.body.newDescription, updated_on: new Date()}
+	const update = {name: ctx.request.body.newName, description: ctx.request.body.newDescription, updated_on: new Date()}
 	const result = await Task.findOneAndUpdate(searchByName, update)
 	if (!result) {
-		throw new Error('Falha ao atualizar tarefa')
+		throw new Error('Failed to update task')
 	} else {
 		console.log(result)
 		ctx.body = {message: 'Task updated!', data: result}
+		ctx.status = 200
 	}
 }
 
@@ -40,7 +43,7 @@ exports.deleteTask = async (ctx) => {
 	if (!result) {
 		throw new Error('Task failed to delete.')
 	} else {
-		ctx.status = 200
 		ctx.body = {message: 'success!'}
+		ctx.status = 204
 	}
 }

@@ -12,7 +12,7 @@ exports.enter = async (ctx) => {
 	} else {
 		var token = jwt.sign({login: ctx.request.body.login}, 'apenasumteste', {expiresIn:84500})
 		ctx.set('Authorization', token)
-		//ctx.body = {message: 'Authentication performed successfully.'}
+		ctx.status = 200
 	}
 }
 
