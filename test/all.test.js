@@ -15,6 +15,7 @@ describe("All tests", function () {
 			.post("/user")
 			.send(userTest)
 			.expect(200)
+            .expect('Content-Type', /json/)
 			.end(function(err) {
     			if (err) throw err;
     			done()
@@ -27,10 +28,12 @@ describe("All tests", function () {
             .post("/auth")
             .send(userTest)
             .expect(200)
-            .end(function(err, res) {
+            .expect('Content-Type', /json/)
+            .expect(function(res) {
+                keyJwt = res.header.authorization
+            })
+            .end(function(err) {
     			if (err) throw err;
-    			keyJwt = res.header.authorization
-    			//console.log(keyJwt)
       			done()
   			})
 	})
@@ -42,6 +45,10 @@ describe("All tests", function () {
 			.set('Authorization', keyJwt)
 			.send(taskTest)
 			.expect(200)
+            .expect('Content-Type', /json/)
+            .expect(function(res) {
+                //console.log(res.body.data)
+            })
 			.end(function(err, res) {
     			if (err) throw err
     			//console.log(res.body)
@@ -54,6 +61,7 @@ describe("All tests", function () {
     		.get("/tasks")
     		.set('Authorization', keyJwt)
     		.expect(200)
+            .expect('Content-Type', /json/)
     		.end(function(err, res) {
     			if (err) throw err;
     			//console.log(res.body.data)
@@ -68,6 +76,7 @@ describe("All tests", function () {
     		.set('Authorization', keyJwt)
 			.send(taskUpdateTest)
 			.expect(200)
+            .expect('Content-Type', /json/)
 			.end(function(err, res) {
     			if (err) throw err
     			//console.log(res.body)

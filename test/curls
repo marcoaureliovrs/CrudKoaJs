@@ -30,25 +30,25 @@ Deleção:
 =================================================================================================================
 get
 
-curl http://localhost:3000/tasks -X GET -v -H "Content-type: application/json" -H "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6Im1hcmNvIiwiaWF0IjoxNTAxMjA4MTgwLCJleHAiOjE1MDEyOTI2ODB9.-EeYhhjA1FeW1oRpIAN6bTmHL46mkzZ12UJwkAzKVb4"
+curl http://localhost:3000/tasks -X GET -v -H "Content-type: application/json" -H "Authorization: KEY!"
 
 
 =================================================================================================================
 post
 
-curl http://localhost:3000/task -X POST -v -H "Content-type: application/json" -H "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6Im1hcmNvIiwiaWF0IjoxNTAwOTkzNDY2LCJleHAiOjE1MDEwNzc5NjZ9.GOpWYV_3HDgcznQoAdO-fqTSl3VMppF1tzI5c4ag_Wk" -d @jsons/tarefaTestePost.json | json_pp
+curl http://localhost:3000/task -X POST -v -H "Content-type: application/json" -H "Authorization: KEY!" -d @jsons/tarefaTestePost.json | json_pp
 
 
 =================================================================================================================
 put
 
-curl http://localhost:3000/task -X PUT -v -H "Content-type: application/json" -d @jsons/tarefaTestePut.json | json_pp
+curl http://localhost:3000/task -X PUT -v -H "Content-type: application/json" -H "Authorization: KEY!" -d @jsons/tarefaTestePut.json | json_pp
 
 
 =================================================================================================================
 delete
 
-curl http://localhost:3000/task -X DELETE -v -H "Content-type: application/json" -d @jsons/tarefaTesteDelete.json | json_pp
+curl http://localhost:3000/task -X DELETE -v -H "Content-type: application/json" -H "Authorization: KEY!" -d @jsons/tarefaTesteDelete.json | json_pp
 
 
 =================================================================================================================
