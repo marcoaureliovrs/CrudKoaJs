@@ -2,7 +2,6 @@
   Include modules
 */
 const koa = require('koa')
-const mongoose = require('mongoose')
 const convert = require('koa-convert')
 const bodyParser = require('koa-bodyparser')
 const router = require('koa-simple-router')
@@ -14,20 +13,8 @@ const task = require('./controller/tarefas')
 const user = require('./controller/user')
 const auth = require('./controller/auth')
 const app = new koa()
+require('./config/database')
 
-/*
-  MongoDB Configuration
-*/
-mongoose.Promise = require('bluebird')
-mongoose
-        .connect('mongodb://localhost/listadetarefas')
-        .then((response) => {
-          console.log('Created connection to MongoDB')
-        })
-        .catch((err) => {
-          console.log("Error in connection to MongoDB")
-          console.log(err);
-        })
 
 /*
   Configuration to Server
@@ -76,4 +63,5 @@ app.use(router(_ => {
 }))
 
 
-app.listen(3000)
+module.exports = app.listen(3000)
+

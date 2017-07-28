@@ -30,7 +30,7 @@ Deleção:
 =================================================================================================================
 get
 
-curl http://localhost:3000/tasks -X GET -v -H "Content-type: application/json" -H "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6Im1hcmNvIiwiaWF0IjoxNTAwOTkzNDY2LCJleHAiOjE1MDEwNzc5NjZ9.GOpWYV_3HDgcznQoAdO-fqTSl3VMppF1tzI5c4ag_Wk"
+curl http://localhost:3000/tasks -X GET -v -H "Content-type: application/json" -H "Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6Im1hcmNvIiwiaWF0IjoxNTAxMjA4MTgwLCJleHAiOjE1MDEyOTI2ODB9.-EeYhhjA1FeW1oRpIAN6bTmHL46mkzZ12UJwkAzKVb4"
 
 
 =================================================================================================================
@@ -60,10 +60,7 @@ Para poder inserir ou fazer atualizações na tabela de Usuario o JSON deve segu
 
 
 Inclusão:
-{
-	"login":"marco",
-	"passwd":"123"
-}
+{"login":"marco", "passwd":"123"}
 
 
 =================================================================================================================
@@ -81,6 +78,6 @@ curl http://localhost:3000/user -X POST -v -H "Content-type: application/json" -
 =>Autenticação<=
 Para poder se autenticar basta enviar o login e senha  para http://localhost:3000/auth, conforme exemplo abaixo:
 
-curl http://localhost:3000/auth -X POST -v -H "Content-type: application/json" -d @jsons/authTest.json | json_pp
+curl http://localhost:3000/auth -X POST -v -H "Content-type: application/json" -d {"login":"marco", "passwd":"123"} | json_pp
 
 =================================================================================================================
